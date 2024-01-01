@@ -1,4 +1,7 @@
-package pSABbyCRC_UnitTestingSuite;
+package pSABbyCRC_UnitTestingSuite.models;
+
+import pSABbyCRC_UnitTestingSuite.livro.exception.*;
+import pSABbyCRC_UnitTestingSuite.usuario.exception.*;
 
 import java.util.HashSet;
 import java.util.Iterator;

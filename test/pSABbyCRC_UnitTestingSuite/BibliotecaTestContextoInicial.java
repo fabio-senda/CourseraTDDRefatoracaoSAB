@@ -4,6 +4,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+import pSABbyCRC_UnitTestingSuite.livro.exception.AdicionarLivroInexistenteException;
+import pSABbyCRC_UnitTestingSuite.models.Biblioteca;
+import pSABbyCRC_UnitTestingSuite.models.Livro;
+import pSABbyCRC_UnitTestingSuite.usuario.exception.UsuarioComNomeVazioException;
+import pSABbyCRC_UnitTestingSuite.usuario.exception.UsuarioInexistenteException;
+import pSABbyCRC_UnitTestingSuite.usuario.exception.UsuarioJaRegistradoException;
 
 public class BibliotecaTestContextoInicial {
 	@Before

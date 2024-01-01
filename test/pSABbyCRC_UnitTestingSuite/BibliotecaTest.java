@@ -4,6 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+import pSABbyCRC_UnitTestingSuite.livro.exception.*;
+import pSABbyCRC_UnitTestingSuite.models.Biblioteca;
+import pSABbyCRC_UnitTestingSuite.models.Livro;
+import pSABbyCRC_UnitTestingSuite.models.Usuario;
+import pSABbyCRC_UnitTestingSuite.usuario.exception.*;
 
 public class BibliotecaTest {
 	@Before
@@ -36,13 +41,13 @@ public class BibliotecaTest {
 	public void whenEmprestoUmLivroAUsuarioEntaoLivroFicaIndisponivelParaEmprestimo()
 			throws LivroIndisponivelParaEmprestimoException,
 			LivroOuUsuarioNulosException {
-		// T13: Empresta um livro: Livro "ClojureÐÐSally Fields" para Usuario
-		// "JosŽ");
+		// T13: Empresta um livro: Livro "Clojureï¿½ï¿½Sally Fields" para Usuario
+		// "Josï¿½");
 		biblioteca.emprestaLivro(livro2, usuario1);
 		assertEquals(usuario1, livro2.getUsuario());
 
-		// T14: Empresta outro livro: Livro "Using CRC CardsÐÐNancy Wilkinson"
-		// para Usuario "Jo‹o");
+		// T14: Empresta outro livro: Livro "Using CRC Cardsï¿½ï¿½Nancy Wilkinson"
+		// para Usuario "Joï¿½o");
 		biblioteca.emprestaLivro(livro3, usuario2);
 		assertEquals(usuario2, livro3.getUsuario());
 	}
@@ -53,8 +58,8 @@ public class BibliotecaTest {
 			LivroOuUsuarioNulosException,
 			DevolveLivroDisponivelParaEmprestimoException,
 			DevolveLivroNuloParaEmprestimoException {
-		// T15: Devolve um livro: Livro "Using CRC CardsÐÐNancy Wilkinson" de
-		// Usuario "Jo‹o");
+		// T15: Devolve um livro: Livro "Using CRC Cardsï¿½ï¿½Nancy Wilkinson" de
+		// Usuario "Joï¿½o");
 		biblioteca.emprestaLivro(livro3, usuario2);
 		biblioteca.devolveLivro(livro3);
 		assertEquals(null, livro3.getUsuario());
@@ -65,9 +70,9 @@ public class BibliotecaTest {
 			throws LivroIndisponivelParaEmprestimoException,
 			LivroOuUsuarioNulosException {
 		// T16: 3 livros emprestados ao mesmo usuario"
-		// 3 Livros: Java Design PatternsÐÐPankaj Kumar" +
-		// "\n\t\tUsing CRC CardsÐÐNancy Wilkinson" +
-		// "\n\t\tUsing CRC CardsÐÐNancy Wilkinson" +
+		// 3 Livros: Java Design Patternsï¿½ï¿½Pankaj Kumar" +
+		// "\n\t\tUsing CRC Cardsï¿½ï¿½Nancy Wilkinson" +
+		// "\n\t\tUsing CRC Cardsï¿½ï¿½Nancy Wilkinson" +
 		// "\n\t\tpara Usuario Joaquim");
 		biblioteca.emprestaLivro(livro1, usuario3);
 		biblioteca.emprestaLivro(livro3, usuario3);
@@ -79,7 +84,7 @@ public class BibliotecaTest {
 	public void whenEmprestoLivroJahEmprestadoEntaoLivroIndisponivelParaEmprestimoExceptionEhLancada()
 			throws LivroIndisponivelParaEmprestimoException,
 			LivroOuUsuarioNulosException {
-		// T17: Empresta um livro j‡ emprestado"
+		// T17: Empresta um livro jï¿½ emprestado"
 		biblioteca.emprestaLivro(livro2, usuario1);
 		biblioteca.emprestaLivro(livro1, usuario3);
 		biblioteca.emprestaLivro(livro3, usuario3);
@@ -92,7 +97,7 @@ public class BibliotecaTest {
 	public void whenEmprestoLivroNuloAUsuarioNaoNuloEntaoLivroOuUsuarioNulosExceptionEhLancada()
 			throws LivroIndisponivelParaEmprestimoException,
 			LivroOuUsuarioNulosException {
-		// T18a: Empresta livro nulo a usuario n‹o nulo"
+		// T18a: Empresta livro nulo a usuario nï¿½o nulo"
 		biblioteca.emprestaLivro(null, usuario2);
 	}
 
@@ -100,7 +105,7 @@ public class BibliotecaTest {
 	public void whenEmprestoLivroNaoNuloAUsuarioNuloEntaoLivroOuUsuarioNulosExceptionEhLancada()
 			throws LivroIndisponivelParaEmprestimoException,
 			LivroOuUsuarioNulosException {
-		// T18b: Empresta livro n‹o nulo a usuario nulo"
+		// T18b: Empresta livro nï¿½o nulo a usuario nulo"
 		biblioteca.emprestaLivro(livro4, null);
 	}
 
@@ -118,8 +123,8 @@ public class BibliotecaTest {
 			LivroOuUsuarioNulosException,
 			DevolveLivroDisponivelParaEmprestimoException,
 			DevolveLivroNuloParaEmprestimoException {
-		// T19: Devolve um livro que est‡ dispon’vel para emprŽstimo:
-		// "Java Design PatternsÐÐPankaj Kumar"
+		// T19: Devolve um livro que estï¿½ disponï¿½vel para emprï¿½stimo:
+		// "Java Design Patternsï¿½ï¿½Pankaj Kumar"
 		biblioteca.emprestaLivro(livro2, usuario1);
 		biblioteca.emprestaLivro(livro3, usuario3);
 		biblioteca.emprestaLivro(livro4, usuario3);
@@ -139,7 +144,7 @@ public class BibliotecaTest {
 	@Test
 	public void whenBuscoLivroPeloNrCatalogoEntaoRetornoLivroCujoNrCatalogoConfere() {
 		// T21: Busca livro por NrCatalogo existente
-		// Livro 2: "ClojureÐÐSally Fields"
+		// Livro 2: "Clojureï¿½ï¿½Sally Fields"
 		Livro livro = biblioteca.buscaLivroPorNrCatalogo(2);
 		assertEquals(2, livro.getNrCatalogo());
 	}
@@ -169,31 +174,31 @@ public class BibliotecaTest {
 	@Test
 	public void whenBuscoLivroPorTituloOuAutorENaoEncontroEntaoRetornoLivroNulo()
 			throws TituloOuAutorVazioException, TituloOuAutorNuloException {
-		// T24: Busca livro por Titulo e Autor e n‹o encontra
+		// T24: Busca livro por Titulo e Autor e nï¿½o encontra
 		Livro livro = biblioteca.buscaLivroPorTituloAutor("Using CRC Cards",
 				"Pankaj Kumar");
 		assertEquals(null, livro);
 
 		livro = biblioteca.buscaLivroPorTituloAutor(
-				"Padr›es de Projeto em Java", "Pankaj Kumar");
+				"Padrï¿½es de Projeto em Java", "Pankaj Kumar");
 		assertEquals(null, livro);
 
 		livro = biblioteca.buscaLivroPorTituloAutor(
-				"Padr›es de Projeto em Java", "Eduardo Guerra");
+				"Padrï¿½es de Projeto em Java", "Eduardo Guerra");
 		assertEquals(null, livro);
 	}
 
 	@Test(expected = TituloOuAutorVazioException.class)
 	public void whenBuscoLivroPorTituloNaoVazioEAutorVazioEntaoTituloOuAutorVazioExceptionEhLancada()
 			throws TituloOuAutorVazioException, TituloOuAutorNuloException {
-		// T25a: Busca livro por Titulo n‹o vazio e Autor vazio
+		// T25a: Busca livro por Titulo nï¿½o vazio e Autor vazio
 		biblioteca.buscaLivroPorTituloAutor("Using CRC Cards", "");
 	}
 
 	@Test(expected = TituloOuAutorVazioException.class)
 	public void whenBuscoLivroPorTituloVazioEAutorNaoVazioEntaoTituloOuAutorVazioExceptionEhLancada()
 			throws TituloOuAutorVazioException, TituloOuAutorNuloException {
-		// T25b: Busca livro por Titulo vazio e Autor n‹o vazio
+		// T25b: Busca livro por Titulo vazio e Autor nï¿½o vazio
 		biblioteca.buscaLivroPorTituloAutor("", "Nancy Wilkinson");
 	}
 
@@ -207,14 +212,14 @@ public class BibliotecaTest {
 	@Test(expected = TituloOuAutorNuloException.class)
 	public void whenBuscoLivroPorTituloNaoNuloEAutorNuloEntaoTituloOuAutorVazioExceptionEhLancada()
 			throws TituloOuAutorVazioException, TituloOuAutorNuloException {
-		// T26a: Busca livro por Titulo n‹o nulo e Autor nulo
+		// T26a: Busca livro por Titulo nï¿½o nulo e Autor nulo
 		biblioteca.buscaLivroPorTituloAutor("Using CRC Cards", null);
 	}
 
 	@Test(expected = TituloOuAutorNuloException.class)
 	public void whenBuscoLivroPorTituloNuloEAutorNaoNuloEntaoTituloOuAutorVazioExceptionEhLancada()
 			throws TituloOuAutorVazioException, TituloOuAutorNuloException {
-		// T26b: Busca livro por Titulo nulo e Autor n‹o nulo
+		// T26b: Busca livro por Titulo nulo e Autor nï¿½o nulo
 		biblioteca.buscaLivroPorTituloAutor(null, "Nancy Wilkinson");
 	}
 

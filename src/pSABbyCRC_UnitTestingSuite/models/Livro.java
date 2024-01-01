@@ -1,4 +1,4 @@
-package pSABbyCRC_UnitTestingSuite;
+package pSABbyCRC_UnitTestingSuite.models;
 
 public class Livro implements Comparable<Object> {
 	private int _nrCatalogo;

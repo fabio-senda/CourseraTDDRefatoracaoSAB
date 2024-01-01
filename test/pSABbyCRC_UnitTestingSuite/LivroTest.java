@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+import pSABbyCRC_UnitTestingSuite.models.Livro;
+import pSABbyCRC_UnitTestingSuite.models.Usuario;
 
 public class LivroTest {
 	@Before
@@ -13,8 +15,8 @@ public class LivroTest {
 
 	@Test
 	public void whenSituacaoInicialEntaoLivroDisponivelParaEmprestimo() {
-		// T1: Testa condições de início!
-		// Assumo que Biblioteca não deixa criar livro com
+		// T1: Testa condiÔøΩÔøΩes de inÔøΩcio!
+		// Assumo que Biblioteca nÔøΩo deixa criar livro com
 		// titulo e/ou autor com nomes vazios ou nulos!
 		assertEquals(null, livro.getUsuario());
 		assertEquals("Java Design Patterns", livro.getTitulo());
@@ -23,7 +25,7 @@ public class LivroTest {
 
 	@Test
 	public void whenAnexaUsuarioNaoNuloAoLivroEntaoLivroFicaIndisponivelParaEmprestimo() {
-		// T2: Anexa usuario não nulo
+		// T2: Anexa usuario nÔøΩo nulo
 		Usuario usuario1 = new Usuario("Jose");
 		livro.anexaUsuarioAoLivro(usuario1);
 		assertEquals(usuario1, livro.getUsuario());
@@ -39,7 +41,7 @@ public class LivroTest {
 
 	@Test
 	public void whenDesanexaUsuarioNaoNuloDoLivroEntaoLivroFicaDisponivelParaEmprestimo() {
-		// T4: Desanexa usuario não nulo
+		// T4: Desanexa usuario nÔøΩo nulo
 		Usuario usuario1 = new Usuario("Jose");
 		livro.anexaUsuarioAoLivro(usuario1);
 		livro.desanexaUsuarioDoLivro();

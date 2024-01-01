@@ -1,4 +1,4 @@
-package pSABbyCRC_UnitTestingSuite;
+package pSABbyCRC_UnitTestingSuite.models;
 
 import java.util.Iterator;
 import java.util.LinkedList;
