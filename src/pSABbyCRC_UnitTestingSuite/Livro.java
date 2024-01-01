@@ -1,11 +1,49 @@
 package pSABbyCRC_UnitTestingSuite;
 
 public class Livro implements Comparable<Object> {
+	private int _nrCatalogo;
+	private String _titulo;
+	private String _autor;
+	// Se _usuario nï¿½o null: livro estï¿½ disponï¿½vel para emprï¿½stimo
+	// Se _usuario null: livro estï¿½ emprestado!
+	private Usuario _usuario;
+
 	public Livro(String titulo, String autor) {
 		setTitulo(titulo);
 		setAutor(autor);
-		// seta _usuario null: livro est‡ dispon’vel para emprŽstimo:
+		// seta _usuario null: livro estï¿½ disponï¿½vel para emprï¿½stimo:
 		desanexaUsuarioDoLivro();
+	}
+
+	public int getNrCatalogo() {
+		return _nrCatalogo;
+	}
+
+	protected void setNrCatalogo(int nrCatalogo) {
+		_nrCatalogo = nrCatalogo;
+	}
+
+	public String getTitulo() {
+		return _titulo;
+	}
+
+	protected void setTitulo(String titulo) {
+		_titulo = titulo;
+	}
+
+	public Usuario getUsuario() {
+		// Responsabilidade: sabe disponibilidade de emprï¿½stimo:
+		// _usuario = null --> livro disponï¿½vel para emprï¿½stimo
+		// _usuï¿½rio = objeto Usuario --> livro indisponï¿½vel para emprï¿½stimo
+		return _usuario;
+	}
+
+	public String getAutor() {
+		return _autor;
+	}
+
+	protected void setAutor(String autor) {
+		_autor = autor;
 	}
 
 	public void anexaUsuarioAoLivro(Usuario usuario) {
@@ -18,9 +56,9 @@ public class Livro implements Comparable<Object> {
 	}
 
 	public void exibe() {
-		System.out.println("\t\t" + "T’tulo: " + "\t\t" + this.getTitulo());
+		System.out.println("\t\t" + "Tï¿½tulo: " + "\t\t" + this.getTitulo());
 		System.out.println("\t\t" + "Autor: " + "\t\t\t" + this.getAutor());
-		System.out.println("\t\t" + "Nr. Cat‡logo: " + "\t\t"
+		System.out.println("\t\t" + "Nr. Catï¿½logo: " + "\t\t"
 				+ this.getNrCatalogo());
 		if (getUsuario() != null)
 			System.out.println("\t\t" + "Quem Emprestou: " + "\t"
@@ -57,44 +95,6 @@ public class Livro implements Comparable<Object> {
 
 	@Override
 	public String toString() {
-		return "\"T’tulo: " + getTitulo() + " Ð Autor: " + getAutor() + "\"";
+		return "\"Tï¿½tulo: " + getTitulo() + " ï¿½ Autor: " + getAutor() + "\"";
 	}
-
-	public int getNrCatalogo() {
-		return _nrCatalogo;
-	}
-
-	protected void setNrCatalogo(int nrCatalogo) {
-		_nrCatalogo = nrCatalogo;
-	}
-
-	public String getTitulo() {
-		return _titulo;
-	}
-
-	protected void setTitulo(String titulo) {
-		_titulo = titulo;
-	}
-
-	public Usuario getUsuario() {
-		// Responsabilidade: sabe disponibilidade de emprŽstimo:
-		// _usuario = null --> livro dispon’vel para emprŽstimo
-		// _usu‡rio = objeto Usuario --> livro indispon’vel para emprŽstimo
-		return _usuario;
-	}
-
-	public String getAutor() {
-		return _autor;
-	}
-
-	protected void setAutor(String autor) {
-		_autor = autor;
-	}
-
-	private int _nrCatalogo;
-	private String _titulo;
-	private String _autor;
-	// Se _usuario n‹o null: livro est‡ dispon’vel para emprŽstimo
-	// Se _usuario null: livro est‡ emprestado!
-	private Usuario _usuario;
 }

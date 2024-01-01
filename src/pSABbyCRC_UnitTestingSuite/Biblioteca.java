@@ -5,11 +5,28 @@ import java.util.Iterator;
 import java.util.TreeSet;
 
 public class Biblioteca {
+	private String _nome;
+	private int _nrUnico = 0; // _nrUnico > zero!
+	private TreeSet<Livro> _repositorioLivros;
+	private HashSet<Usuario> _usuarios;
 
 	public Biblioteca(String nome) {
 		_nome = nome;
 		_repositorioLivros = new TreeSet<Livro>();
 		_usuarios = new HashSet<Usuario>();
+	}
+
+	private int getNrUnico() {
+		// Assumo que cada livro recebe um nrUnico diferente
+		return _nrUnico = _nrUnico + 1;
+	}
+
+	public int sizeRepositorioLivros() {
+		return _repositorioLivros.size();
+	}
+
+	public int sizeUsuarios() {
+		return _usuarios.size();
 	}
 
 	public void adicionaLivroCatalogo(Livro livro)
@@ -188,22 +205,4 @@ public class Biblioteca {
 		System.out.println("<<< Usu‡rios >>>");
 		System.out.println();
 	}
-
-	private int getNrUnico() {
-		// Assumo que cada livro recebe um nrUnico diferente
-		return _nrUnico = _nrUnico + 1;
-	}
-
-	public int sizeRepositorioLivros() {
-		return _repositorioLivros.size();
-	}
-
-	public int sizeUsuarios() {
-		return _usuarios.size();
-	}
-
-	private String _nome;
-	private int _nrUnico = 0; // _nrUnico > zero!
-	private TreeSet<Livro> _repositorioLivros;
-	private HashSet<Usuario> _usuarios;
 }
