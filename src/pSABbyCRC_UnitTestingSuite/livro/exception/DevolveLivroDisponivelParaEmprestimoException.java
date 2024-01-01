@@ -2,8 +2,8 @@ package pSABbyCRC_UnitTestingSuite.livro.exception;
 
 @SuppressWarnings("serial")
 public class DevolveLivroDisponivelParaEmprestimoException extends Exception {
-	public DevolveLivroDisponivelParaEmprestimoException(String message)
+	public DevolveLivroDisponivelParaEmprestimoException(String livro)
     {
-       super(message);
+       super("---> Tentou devolver livro " + livro + " que está disponível para empréstimo!");
     }
 }

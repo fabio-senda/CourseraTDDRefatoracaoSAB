@@ -2,8 +2,8 @@ package pSABbyCRC_UnitTestingSuite.usuario.exception;
 
 @SuppressWarnings("serial")
 public class UsuarioJaRegistradoException extends Exception {
-	public UsuarioJaRegistradoException(String message)
+	public UsuarioJaRegistradoException(String nomeUsuario)
     {
-       super(message);
+       super("Já existe usu‡rio com o nome " + nomeUsuario + "! Use outro nome!");
     }
 }

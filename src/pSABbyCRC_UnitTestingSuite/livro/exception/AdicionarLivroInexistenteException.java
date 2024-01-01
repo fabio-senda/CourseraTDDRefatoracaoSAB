@@ -1,8 +1,8 @@
 package pSABbyCRC_UnitTestingSuite.livro.exception;
 
 public class AdicionarLivroInexistenteException extends Exception {
-	public AdicionarLivroInexistenteException(String message)
+	public AdicionarLivroInexistenteException()
     {
-       super(message);
+       super("Não pode adicionar livro inexistente!");
     }
 }

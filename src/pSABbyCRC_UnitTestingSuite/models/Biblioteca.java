@@ -38,8 +38,7 @@ public class Biblioteca {
 			livro.setNrCatalogo(this.getNrUnico());
 			_repositorioLivros.add(livro);
 		} else
-			throw new AdicionarLivroInexistenteException(
-					"--->N‹o pode adicionar livro inexistente!");
+			throw new AdicionarLivroInexistenteException();
 	}
 
 	public void registraUsuario(String nome)
@@ -51,35 +50,29 @@ public class Biblioteca {
 				if (!_usuarios.contains(usuario)) {
 					_usuarios.add(usuario);
 				} else
-					throw new UsuarioJaRegistradoException("--->J‡ existe usu‡rio com o nome \""
-							+ nome + "\"! Use outro nome!");
+					throw new UsuarioJaRegistradoException(nome);
 			} else
-				throw new UsuarioComNomeVazioException("--->N‹o pode registrar usuario com nome vazio!");
+				throw new UsuarioComNomeVazioException();
 		} else
-			throw new UsuarioInexistenteException("--->N‹o pode registrar usuario inexistente!");
+			throw new UsuarioInexistenteException();
 	}
 
 	public void emprestaLivro(Livro livro, Usuario usuario)
 			throws LivroIndisponivelParaEmprestimoException,
 			LivroOuUsuarioNulosException {
 		if ((livro == null) && (usuario == null))
-			throw new LivroOuUsuarioNulosException(
-					"--->Livro e Usu‡rio inexistentes!");
+			throw new LivroOuUsuarioNulosException("--->Livro e Usuário inexistentes!");
 		if (livro != null) {
 			if (usuario != null) {
 				if (livro.getUsuario() == null) {
 					usuario.anexaLivroAoUsuario(livro);
 					livro.anexaUsuarioAoLivro(usuario);
 				} else
-					throw new LivroIndisponivelParaEmprestimoException(
-							"--->Livro " + livro
-									+ " indispon’vel para emprŽstimo!");
+					throw new LivroIndisponivelParaEmprestimoException(livro.getTitulo());
 			} else
-				throw new LivroOuUsuarioNulosException(
-						"--->N‹o pode emprestar livro a Usu‡rio inexistente!");
+				throw new LivroOuUsuarioNulosException("--->Não pode emprestar livro a Usuário inexistente!");
 		} else
-			throw new LivroOuUsuarioNulosException(
-					"--->N‹o pode emprestar livro inexistente!");
+			throw new LivroOuUsuarioNulosException("--->Não pode emprestar livro inexistente!");
 	}
 
 	public void devolveLivro(Livro livro)
@@ -91,12 +84,9 @@ public class Biblioteca {
 				usuario.desanexaLivroDoUsuario(livro);
 				livro.desanexaUsuarioDoLivro();
 			} else
-				throw new DevolveLivroDisponivelParaEmprestimoException(
-						"---> Tentou devolver livro " + livro
-								+ " que est‡ dispon’vel para emprŽstimo!");
+				throw new DevolveLivroDisponivelParaEmprestimoException(livro.getTitulo());
 		} else
-			throw new DevolveLivroNuloParaEmprestimoException(
-					"--->N‹o pode emprestar livro inexistente!");
+			throw new DevolveLivroNuloParaEmprestimoException();
 	}
 
 	public Livro buscaLivroPorNrCatalogo(int nrUnico) {
@@ -127,11 +117,9 @@ public class Biblioteca {
 					}
 				}
 			} else
-				throw new TituloOuAutorVazioException(
-						"--->Nome do titulo e/ou do autor Ž(s‹o) vazio(s)<<<");
+				throw new TituloOuAutorVazioException("--->Nome do titulo e/ou do autor Ž(s‹o) vazio(s)<<<");
 		} else
-			throw new TituloOuAutorNuloException(
-					"--->Nome do titulo e/ou do autor Ž(s‹o) nulo(s)<<<");
+			throw new TituloOuAutorNuloException("--->Nome do titulo e/ou do autor Ž(s‹o) nulo(s)<<<");
 		return livroAchado;
 	}
 
@@ -150,11 +138,9 @@ public class Biblioteca {
 					}
 				}
 			} else
-				throw new BuscaUsuarioComNomeVazioException(
-						"--->Nome do usu‡rio Ž vazio<<<");
+				throw new BuscaUsuarioComNomeVazioException();
 		} else
-			throw new BuscaUsuarioComNomeNuloException(
-					"--->Nome do usu‡rio Ž nulo<<<");
+			throw new BuscaUsuarioComNomeNuloException();
 		return usuarioAchado;
 	}
 

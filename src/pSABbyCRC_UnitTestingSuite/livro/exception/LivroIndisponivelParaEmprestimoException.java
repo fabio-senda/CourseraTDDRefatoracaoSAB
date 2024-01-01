@@ -2,8 +2,8 @@ package pSABbyCRC_UnitTestingSuite.livro.exception;
 
 @SuppressWarnings("serial")
 public class LivroIndisponivelParaEmprestimoException extends Exception {
-	public LivroIndisponivelParaEmprestimoException(String message)
+	public LivroIndisponivelParaEmprestimoException(String livro)
     {
-       super(message);
+       super("--->Livro " + livro + " indisponível para empréstimo!");
     }
 }

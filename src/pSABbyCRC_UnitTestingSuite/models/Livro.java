@@ -95,6 +95,6 @@ public class Livro implements Comparable<Object> {
 
 	@Override
 	public String toString() {
-		return "\"T�tulo: " + getTitulo() + " � Autor: " + getAutor() + "\"";
+		return "\"Título: " + getTitulo() + " - Autor: " + getAutor() + "\"";
 	}
 }
